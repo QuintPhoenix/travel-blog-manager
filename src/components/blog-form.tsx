@@ -43,6 +43,7 @@ export const BlogForm = () => {
       }),
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning" : 7
       },
     })
     const output = await response.json();
