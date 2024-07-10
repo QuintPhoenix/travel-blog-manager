@@ -43,7 +43,7 @@ export const BlogForm = () => {
       }),
       headers: {
         "Content-Type": "application/json",
-        "ngrok-skip-browser-warning" : 7
+        "ngrok-skip-browser-warning" : "7"
       },
     })
     const output = await response.json();
@@ -61,7 +61,8 @@ export const BlogForm = () => {
   async function generateImages() {
     const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/images/pexels?location=${encodeURIComponent(input.title)}`,{
        headers: {
-        "ngrok-skip-browser-warning" : 7
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning" : "7"
       }
     });
     const data = await response.json();
