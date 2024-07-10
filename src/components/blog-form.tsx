@@ -35,7 +35,7 @@ export const BlogForm = () => {
       null
     );
     const section = input.sections[i];
-    const response = await fetch(`http://20.235.239.252/${section.model}`, {
+    const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/${section.model}`, {
       method: "POST",
       body: JSON.stringify({
         title: input.title,
@@ -58,7 +58,7 @@ export const BlogForm = () => {
   }
 
   async function generateImages() {
-    const response = await fetch(`http://20.235.239.252/images/pexels?location=${encodeURIComponent(input.title)}`);
+    const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/images/pexels?location=${encodeURIComponent(input.title)}`);
     const data = await response.json();
     setOutput("images", data);
   }
