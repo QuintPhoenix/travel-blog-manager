@@ -59,7 +59,11 @@ export const BlogForm = () => {
   }
 
   async function generateImages() {
-    const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/images/pexels?location=${encodeURIComponent(input.title)}`);
+    const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/images/pexels?location=${encodeURIComponent(input.title)}`,{
+       headers: {
+        "ngrok-skip-browser-warning" : 7
+      }
+    });
     const data = await response.json();
     setOutput("images", data);
   }
