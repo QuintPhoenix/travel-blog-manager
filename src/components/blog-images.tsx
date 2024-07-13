@@ -2,7 +2,7 @@ import { Index, Show } from "solid-js";
 import * as Carousel from "~/components/ui/carousel";
 import { styled } from "styled-system/jsx";
 import { TbChevronLeft, TbChevronRight } from "solid-icons/tb";
-export const BlogImages = (props: { images: string[] }) => (
+export const BlogImages = (props: { images: string[][] }) => (
   <Show when={props.images.length > 0}>
     <Carousel.Root>
       <Carousel.Viewport>
@@ -11,11 +11,12 @@ export const BlogImages = (props: { images: string[] }) => (
             {(image, i) => (
               <Carousel.Item index={i}>
                 <styled.img
-                  src={image()}
+                  src={image()[1]}
                   objectFit="contain"
                   width="full"
                   height="300px"
                 />
+                <p style={{"text-align" : "center"}}>Credits - {image()[0]}</p>
               </Carousel.Item>
             )}
           </Index>
