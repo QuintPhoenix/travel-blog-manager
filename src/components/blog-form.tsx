@@ -22,7 +22,7 @@ export const BlogForm = () => {
 
   const [output, setOutput] = createStore<{
     sections: (string | null)[];
-    images: string[];
+    images: string[][];
   }>({
     sections: [],
     images: [],
