@@ -164,10 +164,11 @@ export const BlogForm = () => {
             },
             body: JSON.stringify({
               title: input.title,
-              body: Object.fromEntries(output.sections.map((section, i) => [input.sections[i], section])),
+              body: output.sections.map((section, i) => [input.sections[i].title, section]),
               imageLinks: output.images
             })
           });
+
           const blob = await response.blob();
           const objectUrl = URL.createObjectURL(blob);
           window.open(objectUrl);
