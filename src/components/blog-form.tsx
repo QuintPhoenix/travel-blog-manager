@@ -43,7 +43,7 @@ export const BlogForm = () => {
       }),
       headers: {
         "Content-Type": "application/json",
-        "ngrok-skip-browser-warning" : "7"
+        "ngrok-skip-browser-warning": "7"
       },
     })
     const output = await response.json();
@@ -59,10 +59,10 @@ export const BlogForm = () => {
   }
 
   async function generateImages() {
-    const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/images/pexels?location=${encodeURIComponent(input.title)}`,{
-       headers: {
+    const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/images/pexels?location=${encodeURIComponent(input.title)}`, {
+      headers: {
         "Content-Type": "application/json",
-        "ngrok-skip-browser-warning" : "7"
+        "ngrok-skip-browser-warning": "7"
       }
     });
     const data = await response.json();
@@ -154,6 +154,26 @@ export const BlogForm = () => {
             </>
           )}
         </For>
+        <br />
+        <Button width="full" variant="subtle" onClick={async () => {
+          const response = await fetch(`https://liberal-lamb-hip.ngrok-free.app/generate`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": "7"
+            },
+            body: JSON.stringify({
+              title: input.title,
+              body: Object.fromEntries(output.sections.map((section, i) => [input.sections[i], section])),
+              imageLinks: output.images
+            })
+          });
+          const blob = await response.blob();
+          const objectUrl = URL.createObjectURL(blob);
+          window.open(objectUrl);
+        }}>
+          Download
+        </Button>
       </Container>
     </>
   );
